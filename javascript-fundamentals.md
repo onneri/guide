@@ -1,18 +1,18 @@
 
-#Javascript
+# Javascript
 
-####Language Features
-#####const  
+#### Language Features
+##### const  
 should be initialized with a value
-#####let
+##### let
 is block scope  
 error if used before defined
 
-#####var     
+##### var     
 is not block scope  
 got undefined value before initialized
 
-#####rest params
+##### rest params
 joins all last params as an array  
 rest parameter should be last param in a function
 
@@ -26,7 +26,7 @@ function myfunction('hello',...restparams) {}
 myfunction(word,param1,param2,param3)
 ```
 
-#####destructuring arrays
+##### destructuring arrays
 ```
 let carIds = [1,2,5]
 let [car1,car2,car3] = carIds;
@@ -47,7 +47,7 @@ console.log(remainingCars);
 // [2,  5]
 ```
 
-#####desctructuring objects
+##### desctructuring objects
 ```
 let car = {id:5000, style: 'convertible'}
 let {id, style} = car;
@@ -67,7 +67,7 @@ let id, style;
 // 50000 convertible
 ``` 
 
-#####spread syntax
+##### spread syntax
 spread variable in all values  :
 ```
 function myfunction(param1,param2,param3) {}
@@ -95,7 +95,7 @@ myfunction(...myparams);
 // 1, 2, 3, [4,5,6,7,8]
 ```
 
-#####typeof()    
+##### typeof()    
 
 type | result 
  --- | ---
@@ -108,13 +108,13 @@ typeof(null) | object
 typeof(undefined) | undefined  
 typeof(NaN) | number
 
-#####common type convertions
+##### common type convertions
 foo.toString();  
 Number.parseInt('55');  //55 as a number  
 Number.parseFloat('55.99');  //55.99 as a number
 Number.parseInt('55asdasd');  //55 as a number, ignores chars after last number
   
-#####loops
+##### loops
 let i=0;
 ```  
 for(;i<12;i++){
@@ -125,9 +125,9 @@ for(;i<12;i++){
 // 0 1 3
 ```
 
-####Operators
+#### Operators
 
-#####Equality
+##### Equality
 ```
 == equal value
 == equal value and type
@@ -135,7 +135,7 @@ for(;i<12;i++){
 !==
 ```
 
-#####Unary
+##### Unary
 ```
 ++var1      //increment before use
 var1++      //increment after use 
@@ -146,7 +146,7 @@ var1--      //decrement after use
 -var1       //change numeric value sign
 ```
 
-#####Logical
+##### Logical
 ```
 &&  and   (has precedence over logical ||)
 ||  or
@@ -160,19 +160,19 @@ var1 || var2    //results on var 1 if is defined, if not var2
 !var1
 ```
 
-#####Relational
+##### Relational
 
 ```
 >   <   >=  <=
 // uppercase letters come first that lowercase
 ```
 
-#####Conditional
+##### Conditional
 ```
 expression ? 'if yes': 'if no';
 ```
 
-#####Assignment
+##### Assignment
 
 ```
 +=
@@ -193,9 +193,9 @@ console.log(var1);
 6
 ```
     
-####Functions and scope
+#### Functions and scope
 
-#####Function Scope
+##### Function Scope
 ```
 function startCar(carId){
     let message = 'Starting...';
@@ -227,7 +227,7 @@ function startCar(carId){
 startCar(123);
 ```
 
-#####Block Scope
+##### Block Scope
 
 ```
 if(5===5){
@@ -263,7 +263,7 @@ if(5===5){
 console.log(mesage) //Equal
 ```
 
-#####IIFE Immediatly Invoked Function Expression
+##### IIFE Immediatly Invoked Function Expression
 ```
 (function(){
     console.log('in function');
@@ -278,7 +278,7 @@ let app = (function(){
 })();
 ```
 
-#####Closures
+##### Closures
 When a function executes it goes trough all its code and then completes.  
 All of its variables and functions go out of scope  
   
@@ -296,7 +296,7 @@ let app = (function(){
 console.log(app.getId());
 ```
 
-#####this keyword
+##### this keyword
 ```
 let fn = funtion() {
     console.log(this === window);
@@ -313,7 +313,7 @@ let o = {
 console.log(o.getId());     //123
 ```
 
-#####call and apply
+##### call and apply
 The main ourpose of this functions is to change the value of this  
 (Change the object which is the context of the function)
   
@@ -340,7 +340,7 @@ let newCar = {carId: 456};
 console.log(o.getId.apply(newCar,['ID: ']));     //ID: 456
 ```
 
-#####bind
+##### bind
 Makes a copy of a function and assigns new context
 ```
 let o = {
@@ -354,7 +354,7 @@ let newFn = o.getId.bind(newCar);
 console.log(newFn());     //456
 ```
 
-#####Arrow functions
+##### Arrow functions
 no params + only return value
 ```
 let getId = () => 123;  
@@ -381,7 +381,7 @@ let getId = (prefix,suffix) => {
 console.log( getId('ID: ','!'));   // ID: 123!
 ```
 
-#####Default parameters
+##### Default parameters
 Default params should be at the end.  
 With variables interpolation:
 ```
@@ -395,9 +395,9 @@ console.log(trackCar(123, 'Chicago'));
 // Tracking 123 in Chicago.
 ```
 
-####Objects and Arrays
+#### Objects and Arrays
 
-#####Constructor functions
+##### Constructor functions
 Use to instantiate new objects  
 Capitalize for convention
 ```
