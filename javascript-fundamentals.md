@@ -401,8 +401,244 @@ console.log(trackCar(123, 'Chicago'));
 Use to instantiate new objects  
 Capitalize for convention
 ```
-function Car(){
+function Car(id){
+    this.carId = id;
 }
-let car = new Car();
+let car = new Car(123);
+console.log(car.carId);     // 123
+```
+In a constructor function the first "this" is a new empty object  
+So the properties and methods are attached to "this"  
+```
+function Car(id){
+    this.carId = id;
+    this.start =  function(){
+        console.log('start: '+ this.carId);
+    }
+}
+let car = new Car(123);
+console.log(car.carId);     // start: 123
+```
+#####Prototypes
+In this example:
+```
+function Car(id){
+    this.carId = id;
+    this.start =  function(){
+        console.log('start: '+ this.carId);
+    }
+}
+let car = new Car(123);
+console.log(car.carId);     // start: 123
+```
+If we create too many Car objects the start 
+function will be replicated the same times  
+There is only needed 1 function
+```
+function Car(id){
+    this.carId = id;
+}
+Car.prototype.start =  function(){
+    console.log('start: '+ this.carId);
+}
+let car = new Car(123);
+console.log(car.carId);     // start: 123
 ```
 
+#####Expand Objects Using Prototypes
+```
+String.prototype.hello = function(){
+    return this.toString() + ' Hello';
+}
+
+console.log('foo'.hello());     // foo Hello
+```
+#####JSON
+Used to send javascript object via web (http)
+
+```
+let car= {
+    id: 123,
+    style: 'convertible'
+}
+console.log(JSON.stringify(car));
+// {"id":123,"style":"convertible"}
+``` 
+#####Array iteration
+forEach  
+```
+let carIds = [
+  { carId: 123, style: 'sedan'},
+  { carId: 456, style: 'convertible'},
+  { carId: 789, style: 'sedan'}
+];
+
+carIds.forEach(car => console.log(car));
+
+carIds.forEach((car, index)=> console.log(car,index));
+```
+filter
+```
+let carIds = [
+  { carId: 123, style: 'sedan'},
+  { carId: 456, style: 'convertible'},
+  { carId: 789, style: 'sedan'}
+];
+let convertibles = carIds.filter(
+  car => car.style === 'convertible'
+);
+console.log(convertibles);
+```
+every
+```
+let carIds = [
+  { carId: 123, style: 'sedan'},
+  { carId: 456, style: 'convertible'},
+  { carId: 789, style: 'sedan'}
+];
+let result = carIds.every(
+  car => car.carId > 0
+);
+console.log(result);
+```
+find
+```
+let carIds = [
+  { carId: 123, style: 'sedan'},
+  { carId: 456, style: 'convertible'},
+  { carId: 789, style: 'sedan'}
+];
+let result = carIds.find(
+  car => car.carId > 500
+);
+console.log(result);
+```
+####Classes and Modules
+#####Class Basics
+```
+class Car {
+
+}
+let car = new Car();
+console.log(car);
+```
+#####Constructors and Properties
+When working with constructors "this" keyword is required to access properties
+```
+class Car {
+    constructor(id){
+        this.id = id;
+    }
+}
+let car = new Car(123);
+console.log(car.id);    123
+car.id = 456;
+console.log(car.id);    456
+```
+#####Methods
+```
+class Car {
+  constructor(id){
+    this.id = id;
+  }
+  identify() {
+    return `Car id: ${this.id}`;
+  }
+}
+let car = new Car(123);
+console.log(car.identify());    //Car id: 123
+```
+#####Inheritance
+```
+class Vehicle{
+  constructor(){
+    this.type = 'car';
+  }
+  start() {
+    return `Starting ${this.type}`;
+  }
+}
+class Car extends Vehicle {
+}
+let car = new Car();
+console.log(car.type);    // car
+console.log(car.start());    // Starting car
+```
+If a derived class requires a constructor..
+```
+class Vehicle{
+  constructor(){
+    this.type = 'car';
+  }
+  start() {
+    return `Starting ${this.type}`;
+  }
+}
+class Car extends Vehicle {
+  constructor(){
+    super();
+  }
+}
+let car = new Car();
+console.log(car.type);    // car
+console.log(car.start());    // Starting car
+```
+Same class method definition in derived class
+overrides the one in base class.  
+Using super() can access to base class methods
+```
+class Vehicle{
+  constructor(){
+    this.type = 'car';
+  }
+  start() {
+    return `Starting ${this.type}`;
+  }
+}
+class Car extends Vehicle {
+  constructor(){
+    super();
+  }
+  start() {
+    return `new starting method`;
+  }
+}
+let car = new Car();
+console.log(car.type);    // car
+console.log(car.start());    // new starting method
+```
+#####Create Modules
+"export"...
+```
+export class Car {
+  constructor(id){
+    this.id = id;
+  }
+}
+```
+you can also export variable, function, etc...
+  
+#####Importing modules
+import { "identifier" } from "path/to/model"; 
+```
+import { Car } from './models/car.js';
+
+let car = new Car(123);
+console.log(car.id);
+```
+
+####BOM and DOM
+BOM - browser object model (url, get info of url)  
+DOM - document object model (manipulate the actual web page)
+  
+#####Window object
+is the global object in js
+properties | methods | events
+--- | --- | --- 
+document | alert() | (not common)
+location | back() | 
+console | confirm() |
+innerHeight ||
+innerWidth ||
+pageXOffset ||
+pageYOffset ||
