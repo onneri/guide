@@ -607,7 +607,7 @@ let car = new Car();
 console.log(car.type);    // car
 console.log(car.start());    // new starting method
 ```
-#####Create Modules
+##### Create Modules
 "export"...
 ```
 export class Car {
@@ -618,7 +618,7 @@ export class Car {
 ```
 you can also export variable, function, etc...
   
-#####Importing modules
+##### Importing modules
 import { "identifier" } from "path/to/model"; 
 ```
 import { Car } from './models/car.js';
@@ -627,11 +627,11 @@ let car = new Car(123);
 console.log(car.id);
 ```
 
-####BOM and DOM
+#### BOM and DOM
 BOM - browser object model (url, get info of url)  
 DOM - document object model (manipulate the actual web page)
   
-#####Window object
+##### Window object  
 is the global object in js
 properties | methods | events
 --- | --- | --- 
