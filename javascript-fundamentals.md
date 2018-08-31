@@ -632,7 +632,8 @@ BOM - browser object model (url, get info of url)
 DOM - document object model (manipulate the actual web page)
   
 ##### Window object  
-is the global object in js
+is the global object in js  
+
 properties | methods | events
 --- | --- | --- 
 document | alert() | (not common)
@@ -641,4 +642,5 @@ console | confirm() |
 innerHeight ||
 innerWidth ||
 pageXOffset ||
-pageYOffset ||
+pageYOffset ||  
+
