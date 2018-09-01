@@ -419,8 +419,8 @@ function Car(id){
 let car = new Car(123);
 console.log(car.carId);     // start: 123
 ```
-###Prototypes
-In this example:
+### Prototypes
+In this example...
 ```javascript
 function Car(id){
     this.carId = id;
@@ -431,7 +431,7 @@ function Car(id){
 let car = new Car(123);
 console.log(car.carId);     // start: 123
 ```
-If we create too many Car objects the start 
+if we create too many Car objects the start 
 function will be replicated the same times  
 There is only needed 1 function
 ```javascript
