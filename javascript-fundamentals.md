@@ -908,3 +908,60 @@ form.addEventListener('submit', event => {
   event.preventDefault();
 });
 ```
+
+## Security and building for production
+
+### Chrome developer tools and security
+ 
+- Don't store passwords, secrets or other sensitive information  
+- Don't use global variables
+- Assume hackers can read your JS code and access all data sent to a browser
+
+##### DO NOT STORE ANY SENSITIVE INFORMATION IN JAVASCRIPT VARIABLES ON CLIENT SIDE AT ALL
+
+### Security and ecal() function
+
+```javascript
+let inputsTring = "console.log('Hello');";
+eval(inputString);
+```
+
+##### Avoid eval to minimize injection attacks
+
+### Man in the middle attack 
+
+Example:  
+
+Server -> HTML -> client  
+
+By the nature of the web there could be many servers in between the original server and the client
+  
+It's possible one in the middle could insert a script tag into html file
+
+##### There is nothing we can do directly in js
+We have to handle things in server side
+- Using SSL  
+- Use HTTP Header: Strict-Transport-Security
+- Use cookie attributes: Secure and HttpOnly
+
+### Cross-site scripting attack (XSS)
+
+Server -> HTML -> client  -> 3rd party server  -> JS -> client  
+
+3rd party server can be compromised and return any js file  
+
+Cannot be prevented via js 
+
+- CSP: Content Security Policy
+Use HTTP Header: Content-Security-Policy
+- CORS: Cross Origin Resource Sharing
+use HTTP Header: Access-Control-Allow-Origin 
+
+### Building your application for production
+```javascript
+npm run build
+```
+- bundle (minimized code)
+- bundle.map (maps the minimize code to the original code)
+
+Webpack generates files to distribute via web server (minimized files)
