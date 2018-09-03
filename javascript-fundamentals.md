@@ -845,3 +845,66 @@ promise.then(
   error=> console.log('error: ',error)
 );
 ```
+
+## Forms
+
+### Prevent form submission
+
+```javascript
+let form = document.getElementById('user-form');
+form.addEventListener('submit', event => {
+  event.preventDefault();
+});
+```
+
+### Accessing form fields
+
+```javascript
+let form = document.getElementById('user-form');
+form.addEventListener('submit', event => {
+  let user =  form.elements['user'];
+  let avatarFile = form.elements['avatar-file'];
+  event.preventDefault();
+});
+```
+### Showing validation errors
+```html
+<input type="text" name="user" palceholder="User Name"/>
+<span id="user-error"></span>
+```
+```javascript
+let user = form.elements['user'];
+let userError = document.getElementById('user-error');
+
+userError.textContent = 'invalid entry';
+userError.style.color = 'red';
+user.style.borderColor = 'red';
+user.focus();
+```
+
+### Posting from JavaScript
+```javascript
+let form = document.getElementById('user-form');
+form.addEventListener('submit', event => {
+  let user =  form.elements['user'];
+  let avatarFile = form.elements['avatar-file'];
+  
+  let postingData ={
+    user: user.value,
+    avatarFile: avatarFile.value
+  }
+  // then a post
+  
+  let promise = $.post(
+    "https://jsonplaceholder.typicode.com/posts",
+    postingData
+  );
+  promise.then(
+    data => console.log('success: ',data),
+    error=> console.log('error: ',error)
+  );
+  
+  // prevent form default submit
+  event.preventDefault();
+});
+```
