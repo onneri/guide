@@ -919,7 +919,7 @@ form.addEventListener('submit', event => {
 
 ##### DO NOT STORE ANY SENSITIVE INFORMATION IN JAVASCRIPT VARIABLES ON CLIENT SIDE AT ALL
 
-### Security and ecal() function
+### Security and eval() function
 
 ```javascript
 let inputsTring = "console.log('Hello');";
