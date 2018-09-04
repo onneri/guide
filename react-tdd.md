@@ -156,14 +156,41 @@ Chai, Should(js), Assert.js
 
 **Repeat**
 
-Think about your application components 
+Beofre start think about your application or component's requirements but
+not in a lot of depth.  
+Just hard enough to be small and testable
 
+##### 1. TEST - Create simple test in order to fail (red bar)
+What should be tested?
+- Does it render?
+- Does it render correctly?
+- Does it handle events correctly?
+- Do conditionals work? (if/thens and loops)
+- Are edge cases handled
+What makes a good test
+- Each tests should be independent of the others
+- Any behavior should be specified in only one test
+- Do not test anything that is not required to test
+- No unnecessary assertions
+- Test only one code unit at a time
+- Avoid unnecessary preconditions  
+    If a test relies on something else happening or on another test
+    running first in order to succeed, REFACTOR THE TEST
 
-1. Think
-1. Create simple test in order to fail
-2. Create some code to make the test pass
-3. See if there ways to improve the either one.  
-**Do not write new tests or add functionality, no matter how**  
+##### 2. CODE - Create some code to make the test pass
+Three main strategies:
+1. Fake it  
+Write some code, no matter how bad it is just to get the test to pass 
+2. Use an obvious clean solution  
+Important thing is not to try too hard
+3. The third strategy is called triangulation  
+Only generalize code when you have two examples or more of the test failing
+##### 3. REFACTOR - See if there ways to improve the either one.  
+**Do not write new tests or add functionality, no matter how tempt it is**  
 If you find out something new, add this to a to-do list, for another iteration of the TDD cycle.  
-
  
+## React
+
+#### What is the DOM
+Document object model.  
+API for manipulating the contents of a web page using JavaScript
